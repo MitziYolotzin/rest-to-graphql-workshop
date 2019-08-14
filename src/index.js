@@ -30,14 +30,36 @@ const typeDefs = gql`
   # (A "Mutation" type will be covered later on.)
   type Query {
     books: [Book]
+    characters: [Character]
   }
+
+  enum CharacterStatus {
+    Alive
+    Dead
+    unknown
+  }
+  
+  type Character {
+    name: String
+    id: ID
+    status: String
+    episodes: [String]
+  }
+
+
+
+
+
 `;
+
+
 
 // Resolvers define the technique for fetching the types in the
 // schema.  We'll retrieve books from the "books" array above.
 const resolvers = {
   Query: {
-    books: () => books
+    books: () => books,
+    characters: () => characters
   }
 };
 
